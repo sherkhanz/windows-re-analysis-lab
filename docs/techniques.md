@@ -39,3 +39,7 @@
   - VirtualBox: `08:00:27`
 - In `main()`, if `CheckVM_MAC()` returns `TRUE`, the program calls `MeltScreen()` (infinite GDI loop).
 
+---
+
+
+
