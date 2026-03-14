@@ -12,7 +12,7 @@
 
 ## Anti-Debugging
 
-**Description**: The application identifies if it is being executed within a debugger to prevent dynamic analysis.
+**Description**: The sample identifies if it is being executed within a debugger to prevent dynamic analysis.
 
 ### Screenshot: Anti-Debugging Triggered
 ![Anti-Debugging Triggered](../screenshots/01_anti_debugging.png)
@@ -27,7 +27,7 @@
 
 ## Anti-VM
 
-**Description**: The malware checks whether it is running inside a virtual machine and diverts execution into a disruptive visual payload instead of continuing normal execution.
+**Description**: The sample checks whether it is running inside a virtual machine and diverts execution into a disruptive visual payload instead of continuing normal execution.
 
 ### Screenshot: Anti-VM Melting Screen Triggered
 ![Anti-VM Melting Screen Triggered](../screenshots/02_anti_vm_melting.png)
@@ -52,3 +52,26 @@
 - The function calls `GetTickCount()`.
 - The return value is compared to zero.
 - If the value equals zero, execution jumps to a branch that calls `ExitProcess()` and contains additional instructions.
+
+---
+
+## Persistence
+
+**Description**: The sample establishes user-level persistence by copying itself to the user profile and creating a Registry Run entry so it launches automatically at logon.
+
+### Screenshot: Registry Run Key Persistence
+![Registry Run Key Persistence](../screenshots/04_persistence_registry.png)
+
+### Screenshot: Persistent Process After Logon
+![Persistent Process After Logon](../screenshots/05_persistence_taskmgr.png)
+
+**How it is implemented in `main.c`**  
+- `InstallPersistence()`:
+  - Retrieves the current executable path with `GetModuleFileNameA()`.
+  - Resolves `%APPDATA%` via `ExpandEnvironmentStringsA("%APPDATA%", ...)`.
+  - Copies itself to `%APPDATA%\win_update_mock.exe` using `CopyFileA()`.
+  - Creates/opens the Run key:
+    - `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`
+  - Writes a value named `WinUpdateMock` pointing to the copied path via `RegSetValueExA()`.
+
+ ---
