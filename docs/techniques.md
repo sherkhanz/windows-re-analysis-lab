@@ -98,3 +98,22 @@
   - Title: `Not_A_Virus.exe`
 
 ---
+
+## Embedded Fake IOCs
+
+**Description**: The sample contains a collection of hardcoded strings that resemble indicators of compromise (IOCs), but these artifacts are not tied to the actual runtime behavior of the program.
+
+### Screenshot: Embedded Fake IOCs in String Extraction
+![Embedded Fake IOCs in String Extraction](../screenshots/06_fake_iocs_extraction.png)
+
+**How it is implemented in `main.c`**  
+- A global array `dummy_strings[]` is declared `volatile const char*` and includes:
+  - URLs and a browser User-Agent
+  - Base64-like strings
+  - `wallet.dat`
+  - SMB-like path format string
+  - A suspicious PowerShell download/execute command string
+  - A CVE identifier (`CVE-2021-34527`)
+  - A fake “ransomware mutex” name
+  - `cmd.exe`
+- These strings are not referenced anywhere else in the code (no reads, no prints, no comparisons).
