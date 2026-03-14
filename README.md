@@ -46,10 +46,10 @@ This repository is provided for educational and defensive research purposes only
 
 ```text
 windows-re-analysis-lab/
-├── README.md               # Repository overview and guidelines
-├── LICENSE                 # MIT License
+├── README.md
+├── LICENSE
 ├── src/
-│   └── main.c              # Core simulation source code
+│   └── main.c
 ├── docs/
-│   └── techniques.md       # Detailed technical analysis and methodology
-└── screenshots/            # Evidence of successful technique execution
+│   └── techniques.md
+└── screenshots/
