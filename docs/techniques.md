@@ -48,7 +48,7 @@
 ### Screenshot: Opaque Predicate in IDA Graph View
 ![Opaque Predicate](../screenshots/07_anti_disassembly.png)
 
-**How it is implemented in `main.c`**
+**How it is implemented in `main.c`**  
 - The function calls `GetTickCount()`.
 - The return value is compared to zero.
 - If the value equals zero, execution jumps to a branch that calls `ExitProcess()` and contains additional instructions.
