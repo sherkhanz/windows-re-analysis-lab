@@ -5,8 +5,8 @@
 - **Anti-VM**: Detects sandbox environments by comparing network adapter MAC address prefixes against known VMware and VirtualBox identifiers.
 - **Anti-Disassembly**: Employs opaque predicates and junk byte insertion to disrupt static analysis and linear disassemblers.
 - **Persistence Mechanisms**: Establishes reboot survival by masquerading as a Windows update executable and modifying the Registry Run key.
-- **Benign Ransomware Payload**: Simulates cryptographic ransomware behavior by encrypting strings in memory using the Windows CryptoAPI and RC4 algorithm.
-- **Deception Strategy**: Embeds a list of fake Indicators of Compromise (IOCs) to mislead automated string extraction tools.
+- **Ransomware Simulation**: Simulates cryptographic ransomware behavior by encrypting strings in memory using the Windows CryptoAPI and RC4 algorithm.
+- **Embedded Fake IOCs**: Embeds a list of fake Indicators of Compromise (IOCs) to mislead automated string extraction tools.
 
 ---
 
