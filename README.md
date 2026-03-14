@@ -23,6 +23,11 @@ The **Windows RE Analysis Lab** is an educational C-based Windows malware design
 
 *The sample creates a `Run` key entry to launch automatically at user logon.*
 
+### Ransomware Simulation Triggered
+![Ransomware Simulation Triggered](screenshots/03_ransomware_simulation.png)
+
+*The sample simulates ransomware behavior by displaying repeated ransom-themed popups after encrypting an in-memory test string using the Windows CryptoAPI.*
+
 ## Full Technical Documentation
 
 Detailed technique-by-technique analysis is available here:
