@@ -6,7 +6,7 @@ The **Windows RE Analysis Lab** is an educational Windows reverse engineering pr
 
 - **Anti-Debugging:** Actively detects debugger presence using both standard Windows APIs (`IsDebuggerPresent`) and direct, hook-evading Process Environment Block (PEB) inspection via inline assembly (`$FS:[0x30]`).
 - **Anti-VM:** Validates the execution environment by comparing network adapter MAC address prefixes against known virtualization vendors (VMware, VirtualBox), triggering a disruptive GDI screen-melting effect if a sandbox is detected.
-- **Anti-Disassembly:** 
+- **Anti-Disassembly:** Uses an opaque predicate combined with a rogue junk byte (`0xE8`) to intentionally misalign instructions, demonstrating localized code desynchronization in disassemblers like IDA Pro.
 - **Persistence Mechanisms:** Demonstrates autostart execution by masquerading as a Windows update executable and modifying the `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` registry key.
 - **Ransomware Simulation:** Safely emulates ransomware behavior by utilizing the native Windows Cryptography API (CryptoAPI) to encrypt a designated in-memory string using RC4, followed by a non-destructive visual payload (cascading ransom-style popups).
 - **Embedded Fake IOCs:** Integrates a curated array of deceptive static artifacts (fake URLs, base64 strings, CVE references, and PowerShell commands) to demonstrate the pitfalls of automated string extraction during static triage.
