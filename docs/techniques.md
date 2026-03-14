@@ -23,3 +23,19 @@
   - `CheckPEB_BeingDebugged()` (direct PEB flag inspection via inline assembly)
 - If either condition is true, the program displays a mocking Top-Most MessageBox ("Debugger Detected! Nice try...") and immediately terminates, blocking further dynamic analysis.
 
+---
+
+## Anti-VM
+
+**Description**: The malware checks whether it is running inside a virtual machine and diverts execution into a disruptive visual payload instead of continuing normal execution.
+
+### Screenshot: Anti-VM Melting Screen Triggered
+![Anti-VM Melting Screen Triggered](../screenshots/02_anti_vm_melting.png)
+
+**How it is implemented in `main.c`**  
+- `CheckVM_MAC()` calls `GetAdaptersInfo()` and iterates network adapters.
+- It checks the first three bytes of each adapter MAC address against known VM prefixes:
+  - VMware: `00:05:69`, `00:0C:29`, `00:50:56`
+  - VirtualBox: `08:00:27`
+- In `main()`, if `CheckVM_MAC()` returns `TRUE`, the program calls `MeltScreen()` (infinite GDI loop).
+
