@@ -14,8 +14,12 @@
 
 **Description**: The application identifies if it is being executed within a debugger to prevent dynamic analysis.
 
+### Screenshot: Anti-Debugging Triggered
+![Anti-Debugging Triggered](../screenshots/01_anti_debugging.png)
+
 **How it is implemented in `main.c`**  
 - `main()` checks two conditions:
   - `IsDebuggerPresent()` (Windows API)
   - `CheckPEB_BeingDebugged()` (direct PEB flag inspection via inline assembly)
 - If either condition is true, the program displays a mocking Top-Most MessageBox ("Debugger Detected! Nice try...") and immediately terminates, blocking further dynamic analysis.
+
