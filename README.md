@@ -1,6 +1,6 @@
 # Windows RE Analysis Lab
 
-The **Windows RE Analysis Lab** is an educational C-based Windows malware designed to emulate behaviors commonly observed in advanced Windows threats. The primary objective of this repository is to provide a safe, controlled testing ground for reverse engineers, security analysts, and students to study evasion tactics, validate static/dynamic analysis tools, and practice defensive techniques.
+The **Windows RE Analysis Lab** is an educational Windows reverse engineering project created to simulate and analyze behavior patterns commonly observed in malware samples.
 
 ## Core Capabilities
 
