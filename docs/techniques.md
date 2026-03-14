@@ -75,3 +75,26 @@
   - Writes a value named `WinUpdateMock` pointing to the copied path via `RegSetValueExA()`.
 
  ---
+
+ ## Ransomware Simulation
+
+**Description**: The sample simulates ransomware-style behavior by encrypting an in-memory string using the Windows CryptoAPI and then repeatedly displaying ransom-themed message boxes.
+
+### Screenshot: Ransomware Simulation Triggered
+![Ransomware Simulation Triggered](../screenshots/03_ransomware_simulation.png)
+
+**How it is implemented in `main.c`**  
+- `ExecuteBenignPayload()`:
+  - Defines an in-memory test string (`targetString[]`) and a password (`"supersecretpassword"`).
+  - Uses CryptoAPI:
+    - `CryptAcquireContextA()` (with `CRYPT_VERIFYCONTEXT`)
+    - `CryptCreateHash()` with `CALG_MD5`
+    - `CryptHashData()` over the password
+    - `CryptDeriveKey()` with `CALG_RC4`
+    - `CryptEncrypt()` to encrypt the in-memory string buffer
+  - After encryption, it enters an infinite loop that repeatedly spawns `PopupThread` via `CreateThread()` and sleeps briefly.
+- `PopupThread()` displays a message box:
+  - Text: `Oops! Your files have been encrypted! ... (Just kidding, this is an educational simulation!)`
+  - Title: `Not_A_Virus.exe`
+
+---
